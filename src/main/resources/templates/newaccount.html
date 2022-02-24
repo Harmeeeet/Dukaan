@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+	<script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+<meta charset="ISO-8859-1">
+<title>New Account</title>
+</head>
+<body>
+<div>
+<h1>Create New Account</h1>
+<form action="#" th:action="@{/save}" th:object="${newaccount}" method="post">
+<div class="row">
+    <div class="col-4">
+      <input type="text" class="form-control" placeholder="First Name" name="fname" th:field="*{fname}">
+    </div>
+    <div class="col-4">
+      <input type="text" class="form-control" placeholder="Last Name" name="lname" th:field="*{lname}">
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-4">
+      <input type="text" class="form-control" placeholder="Email" name="email" th:field="*{email}">
+    </div>
+    <div class="col-4">
+      <input type="number" class="form-control" placeholder="Phone number" name="ph" th:field="*{ph}">
+    </div>
+  </div>
+  <div class="row">
+  <div class="col-8">
+  <textarea class="form-control" placeholder="Address" name="address" rows=4 th:field="*{address}"></textarea>
+  </div>
+  </div>
+  
+  <div class="row">
+    <div class="col-4">
+      <input type="password" class="form-control" placeholder="New Password" name="password" th:field="*{password}">
+    </div>
+   
+  </div>
+  <button class="btn text-white rounded" style="background-color:#0e1c36">Sign Up</button>
+</form>
+
+</div>
+</body>
+</html>

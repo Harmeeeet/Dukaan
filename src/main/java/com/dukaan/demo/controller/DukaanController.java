@@ -2,7 +2,9 @@ package com.dukaan.demo.controller;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -37,5 +39,16 @@ public class DukaanController {
 			return mv;
 		}
 	}
-	
+	@GetMapping("/newaccount")
+		public ModelAndView newaccount() {
+			ModelAndView mv=new ModelAndView("newaccount");
+			DukaanModel md=new DukaanModel();
+			mv.addObject("newaccount",md);
+			return mv;
+		}
+	@PostMapping("/save")
+	public String save(@ModelAttribute("newaccount") DukaanModel dukaan) {
+		service.save(dukaan);
+		return "redirect:/login";
+	}
 }

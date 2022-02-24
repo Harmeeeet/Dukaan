@@ -5,28 +5,35 @@ import javax.persistence.Id;
 
 @Entity
 public class DukaanModel {
-     @Id
-	private String user_id;
-	private String password;
 	private String fname;
 	private String lname;
+	@Id
+	private String user_id=fname+lname;
+	private String password;
+	
 	private String email;
-	private String dob;
+	//private String dob;
 	private String address;
 	private int ph;
-	private boolean role;
-	
-	@Override
-	public String toString() {
-		return "DukaanModel [user_id=" + user_id + ", password=" + password + ", fname=" + fname + ", lname=" + lname
-				+ ", email=" + email + ", dob=" + dob + ", address=" + address + ", ph=" + ph + ", role=" + role + "]";
-	}
-	public boolean isRole() {
-		return role;
-	}
-	public void setRole(boolean role) {
-		this.role = role;
-	}
+	//private boolean role;
+	//private String gender;
+//	public String getGender() {
+//		return gender;
+//	}
+//	public void setGender(String gender) {
+//		this.gender = gender;
+//	}
+//	@Override
+//	public String toString() {
+//		return "DukaanModel [user_id=" + user_id + ", password=" + password + ", fname=" + fname + ", lname=" + lname
+//				+ ", email=" + email + ", dob=" + dob + ", address=" + address + ", ph=" + ph + ", role=" + role + "]";
+//	}
+//	public boolean isRole() {
+//		return role;
+//	}
+//	public void setRole(boolean role) {
+//		this.role = role;
+//	}
 	public DukaanModel() {
 		super();
 		// TODO Auto-generated constructor stub
@@ -61,12 +68,12 @@ public class DukaanModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-	public String getDob() {
-		return dob;
-	}
-	public void setDob(String dob) {
-		this.dob = dob;
-	}
+//	public String getDob() {
+//		return dob;
+//	}
+//	public void setDob(String dob) {
+//		this.dob = dob;
+//	}
 	public String getAddress() {
 		return address;
 	}
@@ -79,5 +86,6 @@ public class DukaanModel {
 	public void setPh(int ph) {
 		this.ph = ph;
 	}
+	 
 	
 }
