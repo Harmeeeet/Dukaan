@@ -24,11 +24,11 @@ public class DukaanController {
 	
 	@RequestMapping("/checkuser")
 	public ModelAndView checkuser(@ModelAttribute("loginuser") DukaanModel duk) {
-		
+		String modelid=duk.getUser_id();
 		if(service.checkuser(duk)==true) {
-			DukaanModel newuser=service.get(duk);
+			DukaanModel newuser=service.get(modelid);
 			ModelAndView mv=new ModelAndView("homepage");
-			//mv.addObject("user",newuser);
+			mv.addObject("user",newuser);
 			return mv;
 		}
 		else {

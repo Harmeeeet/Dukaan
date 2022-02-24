@@ -8,13 +8,13 @@
 <title>Login</title>
 </head>
 <body>
-<div class=>
+<div class="container mt-3">
 <form  action="#" th:action="@{/checkuser}" th:object="${loginuser}" method="post">
-<div>
+<div class="mb-3 mt-3">
 <label for="user_id" class="form-label">User Id:</label>
 <input type="text" th:field="*{user_id}" name="user_id" placeholder="USER" class="form-control">
 </div>
-<div>
+<div class="mb-3">
 <label for="pass" class="form-label">Password:</label>
 <input type="password" th:field="*{password}" name="password" placeholder="PASSWORD" class="form-control">
 </div>

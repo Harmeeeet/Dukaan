@@ -16,6 +16,11 @@ public class DukaanModel {
 	private int ph;
 	private boolean role;
 	
+	@Override
+	public String toString() {
+		return "DukaanModel [user_id=" + user_id + ", password=" + password + ", fname=" + fname + ", lname=" + lname
+				+ ", email=" + email + ", dob=" + dob + ", address=" + address + ", ph=" + ph + ", role=" + role + "]";
+	}
 	public boolean isRole() {
 		return role;
 	}

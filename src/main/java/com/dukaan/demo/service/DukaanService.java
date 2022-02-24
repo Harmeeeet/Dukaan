@@ -15,11 +15,15 @@ public class DukaanService {
 	public void save(DukaanModel duk) {
 		repo.save(duk);
 	}
-	public boolean checkuser(DukaanModel duk) {
-		
-		if(repo.existsById(duk.getUser_id())) {
-			DukaanModel user=repo.getById(duk.getUser_id());
-			if(user.getPassword()==(duk.getPassword())) {
+	public DukaanModel get(String id) {
+		return repo.findById(id).get();
+	}
+	public boolean checkuser(DukaanModel md) {
+		String mid=md.getUser_id();
+		if(repo.existsById(mid)) {
+			DukaanModel user=get(mid);
+			System.out.print(user);
+			if(user.getPassword().equals(md.getPassword())) {
 			return true;
 			}
 		}
@@ -27,7 +31,5 @@ public class DukaanService {
 			return false;
 		
 	}
-	public DukaanModel get(DukaanModel duk) {
-		return repo.getById(duk.getUser_id());
-	}
+	
 }
