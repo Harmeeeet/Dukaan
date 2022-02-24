@@ -5,12 +5,12 @@ import javax.persistence.Id;
 
 @Entity
 public class DukaanModel {
+	
+	@Id
+	private String user_id;
+	private String password;
 	private String fname;
 	private String lname;
-	@Id
-	private String user_id=fname+lname;
-	private String password;
-	
 	private String email;
 	//private String dob;
 	private String address;
