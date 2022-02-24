@@ -5,7 +5,8 @@ import javax.persistence.Id;
 
 @Entity
 public class DukaanModel {
-     @Id
+    
+	@Id
 	private String user_id;
 	private String password;
 	private String fname;
@@ -74,5 +75,10 @@ public class DukaanModel {
 	public void setPh(int ph) {
 		this.ph = ph;
 	}
+	 @Override
+		public String toString() {
+			return "DukaanModel [user_id=" + user_id + ", password=" + password + ", fname=" + fname + ", lname=" + lname
+					+ ", email=" + email + ", dob=" + dob + ", address=" + address + ", ph=" + ph + ", role=" + role + "]";
+		}
 	
 }

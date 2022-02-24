@@ -1,5 +1,7 @@
 package com.dukaan.demo.service;
 
+import java.util.Optional;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,8 +20,9 @@ public class DukaanService {
 	public boolean checkuser(DukaanModel duk) {
 		
 		if(repo.existsById(duk.getUser_id())) {
-			DukaanModel user=repo.getById(duk.getUser_id());
-			if(user.getPassword()==(duk.getPassword())) {
+			DukaanModel user = repo.findById(duk.getUser_id()).get();
+			if(duk.getPassword().equals(user.getPassword())) {
+			System.out.print(user);
 			return true;
 			}
 		}

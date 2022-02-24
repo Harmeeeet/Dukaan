@@ -28,7 +28,7 @@ public class DukaanController {
 		if(service.checkuser(duk)==true) {
 			DukaanModel newuser=service.get(duk);
 			ModelAndView mv=new ModelAndView("homepage");
-			//mv.addObject("user",newuser);
+			mv.addObject("user",newuser);
 			return mv;
 		}
 		else {
