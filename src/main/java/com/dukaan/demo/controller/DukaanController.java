@@ -46,7 +46,7 @@ public class DukaanController {
 			mv.addObject("newaccount",md);
 			return mv;
 		}
-	@PostMapping("/save")
+	@PostMapping(value="/save")
 	public String save(@ModelAttribute("newaccount") DukaanModel dukaan) {
 		service.save(dukaan);
 		return "redirect:/login";

@@ -1,33 +1,34 @@
 package com.dukaan.demo.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class DukaanModel {
+     @Id
+	private String user_id;
+	private String password;
 	private String fname;
 	private String lname;
-	@Id
-	private String user_id=fname+lname;
-	private String password;
-	
 	private String email;
-	//private String dob;
+	 @DateTimeFormat(pattern = "dd/MM/yyyy")
+	    private Date dob;
 	private String address;
 	private int ph;
-	//private boolean role;
 	//private String gender;
-//	public String getGender() {
-//		return gender;
+	
+//public String getGender() {
+//	return gender;
 //	}
-//	public void setGender(String gender) {
+//	public void setGender(String gender) {	
 //		this.gender = gender;
 //	}
-//	@Override
-//	public String toString() {
-//		return "DukaanModel [user_id=" + user_id + ", password=" + password + ", fname=" + fname + ", lname=" + lname
-//				+ ", email=" + email + ", dob=" + dob + ", address=" + address + ", ph=" + ph + ", role=" + role + "]";
-//	}
+	//	private boolean role;
+//	
 //	public boolean isRole() {
 //		return role;
 //	}
@@ -68,12 +69,12 @@ public class DukaanModel {
 	public void setEmail(String email) {
 		this.email = email;
 	}
-//	public String getDob() {
-//		return dob;
-//	}
-//	public void setDob(String dob) {
-//		this.dob = dob;
-//	}
+	public Date getDob() {
+		return dob;
+	}
+	public void setDob(Date dob) {
+		this.dob = dob;
+	}
 	public String getAddress() {
 		return address;
 	}
@@ -86,6 +87,5 @@ public class DukaanModel {
 	public void setPh(int ph) {
 		this.ph = ph;
 	}
-	 
 	
 }
