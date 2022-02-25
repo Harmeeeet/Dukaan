@@ -3,61 +3,103 @@
       xmlns:th="http://www.thymeleaf.org">
 <head>
 <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.css}"/>
+    <link th:rel="stylesheet" th:href="@{assets/bootstrap-datepicker/css/bootstrap-datepicker.standalone.css}"/>
+    <link th:rel="stylesheet" th:href="@{webjars/bootstrap/4.0.0-2/css/bootstrap.min.css} "/>
+    <link th:rel="stylesheet" th:href="@{webjars/font-awesome/5.11.2/css/all.css} "/>
 	<script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+	
 <meta charset="ISO-8859-1">
 <title>New Account</title>
+<style>
+input,label,textarea,button{
+margin-top:15px;
+}
+
+</style>
 </head>
 <body>
-<div>
+<div class="container mt-3">
+
 <h1>Create New Account</h1>
 <form action="#" th:action="@{/save}" th:object="${newaccount}" method="post">
+ 
 <div class="row">
     <div class="col-4">
-      <input type="text" class="form-control" placeholder="First Name" name="fname" th:field="*{fname}">
+      <input type="text" class="form-control" placeholder="First Name" name="fname" th:field="*{fname}" required="required">
     </div>
     <div class="col-4">
-      <input type="text" class="form-control" placeholder="Last Name" name="lname" th:field="*{lname}">
+      <input type="text" class="form-control" placeholder="Last Name" name="lname" th:field="*{lname}" required="required">
     </div>
   </div>
   <div class="row">
     <div class="col-4">
-      <input type="text" class="form-control" placeholder="Email" name="email" th:field="*{email}">
+      <input type="text" class="form-control" placeholder="Email" name="email" th:field="*{email}" required="required">
     </div>
     <div class="col-4">
-      <input type="number" class="form-control" placeholder="Phone number" name="ph" th:field="*{ph}">
+      <input type="number" class="form-control" placeholder="Phone number" name="ph" th:field="*{ph}" required="required">
     </div>
   </div>
   <div class="row">
   <div class="col-8">
-  <textarea class="form-control" placeholder="Address" name="address" rows=4 th:field="*{address}"></textarea>
+  <textarea class="form-control" placeholder="Address" name="address" rows=4 th:field="*{address}" required="required"></textarea>
   </div>
   </div>
   <div class="row">
   <div class="col-4">
-  <input type="date" class="form-control" th:field="*{dob}">
-  </div> 
+  <label for="dob">Date Of Birth:</label>
+  <input name="dob" type="date" class="form-control" th:field="*{dob}">
+  </div>   </div>
+  <div class="row">
   <div class="col-4">
  <label for="male">Male:</label>
-  <input type="radio" name="male" class="form-control" th:field="*{gender}" value="Male">
+  <input type="radio" name="male" th:field="*{gender}" value="Male">
   
   <label for="female">Female:</label>
-  <input type="radio" name="female" class="form-control" th:field="*{gender}" value="Female">
+  <input type="radio" name="female" th:field="*{gender}" value="Female">
   </div>
   </div>
 
+
+
+  <div class="row">
+    <div class="col-4">   
+       <input type="text" class="form-control" placeholder="User Id" name="user_id" th:field="*{user_id}">
+    </div>
+    <div class="col-4 mt-4">
+    <h6 class="text-danger" th:text="${alreadyexists}"></h6>
+    </div>
+  </div>
   
   <div class="row">
-    <div class="col-4">
-      <input type="text" class="form-control" placeholder="User Id" name="user_id" th:field="*{user_id}">
-    </div>
-    <div class="col-4">
-      <input type="password" class="form-control" placeholder="New Password" name="password" th:field="*{password}">
-    </div>
-   
+      <div class="col-4">
+     <input type="password" class="form-control" id="pass" placeholder="New Password" name="password" th:field="*{password}" required="required" onkeyup="check()">
+     </div>
+         <div class="col-4">
+     <input type="password" class="form-control" id="cpass" placeholder="Confirm Password" name="cpassword" required="required" onkeyup="check()">
+     </div>
   </div>
-  <button class="btn text-white rounded" style="background-color:#0e1c36">Sign Up</button>
+  <h6 id="passcheck" class="mt-2"></h6>
+
+  <button id='subbutton' class="btn text-white rounded" disabled style="background-color:#0e1c36">Sign Up</button>
 </form>
 
 </div>
+<script>
+var check = () => {
+	
+	
+	if (document.getElementById('pass').value == document.getElementById('cpass').value) {
+	    document.getElementById('passcheck').style.color = 'green';
+	    document.getElementById('passcheck').innerHTML = 'Password Match!';
+	    document.getElementById('subbutton').disabled=false;
+	    
+	  } else {
+	    document.getElementById('passcheck').style.color = 'red';
+	    document.getElementById('passcheck').innerHTML = 'Password do not match!';
+	  }
+}
+</script>
 </body>
-</html>
+</html> 

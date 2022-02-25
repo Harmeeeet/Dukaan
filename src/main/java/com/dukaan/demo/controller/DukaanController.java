@@ -46,9 +46,20 @@ public class DukaanController {
 			mv.addObject("newaccount",md);
 			return mv;
 		}
-	@PostMapping("/save")
-	public String save(@ModelAttribute("newaccount") DukaanModel dukaan) {
-		service.save(dukaan);
-		return "redirect:/login";
+	@PostMapping(value="/save")
+	public ModelAndView save(@ModelAttribute("newaccount") DukaanModel dukaan) {
+		if(service.checknewuser(dukaan))
+		{
+			service.save(dukaan);
+			ModelAndView mv = new ModelAndView("redirect:http://localhost:8080/login");
+			return mv;
+		}
+		else {
+			ModelAndView mv = new ModelAndView("newaccount");
+			mv.addObject("newaccount", dukaan);
+			mv.addObject("alreadyexists","UserID already exists!");
+			return mv;
+		}
+		
 	}
 }

@@ -1,12 +1,15 @@
 package com.dukaan.demo.model;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
 
+import org.springframework.format.annotation.DateTimeFormat;
+
 @Entity
 public class DukaanModel {
-	
-	@Id
+     @Id
 	private String user_id;
 	private String password;
 	private String fname;
@@ -28,6 +31,9 @@ public class DukaanModel {
 //		return "DukaanModel [user_id=" + user_id + ", password=" + password + ", fname=" + fname + ", lname=" + lname
 //				+ ", email=" + email + ", dob=" + dob + ", address=" + address + ", ph=" + ph + ", role=" + role + "]";
 //	}
+
+	//	private boolean role;
+//	
 //	public boolean isRole() {
 //		return role;
 //	}
@@ -86,6 +92,5 @@ public class DukaanModel {
 	public void setPh(int ph) {
 		this.ph = ph;
 	}
-	 
 	
 }

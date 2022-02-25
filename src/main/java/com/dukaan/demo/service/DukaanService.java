@@ -36,5 +36,11 @@ public class DukaanService {
 			return false;
 		
 	}
+
+	public boolean checknewuser(DukaanModel dukaan) {
+		if(repo.existsById(dukaan.getUser_id()))
+		return false;
+		else return true;
+	}
 	
 }
