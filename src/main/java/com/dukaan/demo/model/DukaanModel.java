@@ -9,7 +9,12 @@ import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 public class DukaanModel {
+<<<<<<< HEAD
      @Id
+=======
+	
+	@Id
+>>>>>>> 250e27eca9449efdc2447d9f3b6eaea569be7dff
 	private String user_id;
 	private String password;
 	private String fname;
