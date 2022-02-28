@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:th="http://www.thymeleaf.org">
+<head>
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootswatch/4.5.2/cosmo/bootstrap.min.css" />
+	<script src= "https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js" ></script>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<form action="#" th:action="@{/saveitem}" th:object="${item}" method="post">
+<input type="hidden" th:field="*{item_id}">
+Price:<input type="text" th:field="*{price}">
+Color:<input type="text" th:field="*{color}">
+Brand:<input type="text" th:field="*{brand}">
+Type:<input type="text" th:field="*{type}">
+
+Gender:<input type="text" th:field="*{gender}">
+Size:<input type="text" th:field="*{size}">
+<button>Save</button>
+</form>
+</body>
+</html>
