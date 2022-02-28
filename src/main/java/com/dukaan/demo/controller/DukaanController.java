@@ -17,6 +17,12 @@ public class DukaanController {
 	@Autowired
 	DukaanService service;
 	
+	@RequestMapping("/")
+	public String home()
+	{
+		return "/homepage";
+	}
+	
 	@RequestMapping("/login")
 	public ModelAndView login() {
 		ModelAndView mv=new ModelAndView("login");
