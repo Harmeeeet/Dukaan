@@ -32,4 +32,8 @@ public class ItemService {
 			sum=sum+i;
 		}
 	}
+	public ItemModel getByid(int i) {
+		ItemModel model=repo.findById(i).get();
+		return model;
+	}
 }

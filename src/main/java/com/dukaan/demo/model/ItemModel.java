@@ -11,6 +11,7 @@ public class ItemModel {
  @Id
  @GeneratedValue(strategy=GenerationType.IDENTITY)
  private int item_id;
+
  private String price;
  private String color;
  private String type;
@@ -18,7 +19,13 @@ public class ItemModel {
  private String gender;
  private String image;
  private String size;
- 
+ private String name;
+public String getName() {
+	return name;
+}
+public void setName(String name) {
+	this.name = name;
+}
 public String getSize() {
 	return size;
 }

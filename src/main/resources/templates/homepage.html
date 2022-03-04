@@ -12,20 +12,31 @@
 background-color:white;
 color:black!important;
 }
+#your-account:hover{
+display:block;
+font-size:15px!important;
+background-color:white;
+color:black!important;
+}
+#your-account:hover~div,#your-account~div:hover{
+display:block;
+}
+#your-account~div{
+display:none;
+}
 .nav-link:hover{
 font-size:20px;
 }
 #item-comp{
 width:450px;
 height:450px;
-background-color:gray;
 margin:20px;
 }
 </style>
 </head>
 <body style="padding-bottom:20px;">
 <div style="font-size:50px; background-image:url('https://marketplace.canva.com/EAEthkBVLfQ/1/0/1600w/canva-blush-wave-desktop-wallpaper-drvq3zaYl2E.jpg');">
-<div style="margin:auto;width:450px;">Welcome To Dukaan  <img style="height:50px; position:absolute; right:10px; top:12px;" src="https://cdn-icons.flaticon.com/png/512/2838/premium/2838895.png?token=exp=1646052390~hmac=394d550372b9c5fbb4fc28b5ddf0c55e"></div>
+<div style="margin:auto;width:450px;">Welcome To Dukaan  <a th:href="@{/gotocart}"><img  style="height:50px; position:absolute; right:10px; top:12px;" src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" ></a></div>
 
 </div>
 
@@ -57,34 +68,43 @@ margin:20px;
   <!-- Links -->
    <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link rounded mx-1" id="sign-comp" style="color:white;" href="#">Sign-in</a>
+      <a class="nav-link rounded mx-1" id="sign-comp" style="color:white;" th:href="@{/login}" th:if="${isLogged==false}">Sign-in</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link rounded border" id="sign-comp" style="color:white;" href="#">Sign-Up</a>
+      <a class="nav-link rounded border" id="sign-comp" style="color:white;" th:href="@{/newaccount}" th:if="${isLogged==false}">Sign-Up</a>
+    </li>
+     <li class="nav-item dropdown">
+      <a class="nav-link rounded  border" id="your-account" style="color:white;" th:if="${isLogged==true}" data-toggle="dropdown">Your Account</a>
+      <div class="dropdown-menu">
+        <a class="dropdown-item" href="#">Your Profile</a>
+        <a class="dropdown-item" href="#">Your Orders</a>
+        <a class="dropdown-item" th:href="@{/login}">Logout</a>
+      </div>
     </li>
     </ul>
   
 </nav>
 
-<div class="w-100 d-flex">
-<div class="bg-light col-3">a</div>
-<div class="bg-success col-9 d-flex flex-wrap">
+<div class="w-100 h-100 d-flex">
+<div class="bg-light col-2"></div>
+<div class=" col-10 d-flex flex-wrap">
 
-<div id="item-comp" class="d-flex">
+<div id="item-comp" class="d-flex shadow-sm rounded border" th:each="item: ${listofitems}">
 
-<div class="text-center w-50">
-<div style="background-color:pink; height:350px;">
-</div>
-<div>Name</div>
+<div style="background-color:pink; height:450px;">a
 </div>
 
-<div class="text-center flex-fill">
-<div class="mt-4">Price</div>
-<div class="mt-5">Size</div>
-<div class="mt-2">Brand</div>
-<div class="mt-2">Colour</div>
-<div class="mt-5">WishList</div>
-<div class="mt-5">AddToCart</div>
+
+
+<div class="text-center flex-fill" >
+<div class="mt-4" th:text="${item.name}"></div>
+<div class="mt-4" th:text="${item.price}"></div>
+<div class="mt-5" th:text="${item.size}"></div>
+<div class="mt-2" th:text="${item.brand}"></div>
+<div class="mt-2" th:text="${item.color}"></div>
+<div class="mt-5"  >WishList</div>
+<div class="mt-5" ><a th:if="${isLogged==false}" th:href="@{/login}"><img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" style="height:40px"></a>
+<a th:if="${isLogged==true}" th:href="@{'/addtocart/' + ${item.item_id}}"><img src="https://cdn-icons-png.flaticon.com/512/3144/3144456.png" style="height:40px"><span class="badge badge-light">0</span></a></div>
 </div>
 
 </div>

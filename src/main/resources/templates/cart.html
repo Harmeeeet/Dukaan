@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<div th:each="item : ${listofitems}">
+<div th:text="${item.price}"></div>
+<div th:text="${item.name}"></div>
+<div th:text="${item.type}"></div>
+<div th:text="${item.color}"></div>
+<div th:text="${item.brand}"></div>
+</div>
+</body>
+</html>
